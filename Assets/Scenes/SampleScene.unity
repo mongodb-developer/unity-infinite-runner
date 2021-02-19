@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1787217447}
   currentScoreText: {fileID: 448996450}
+  cakeText: {fileID: 514165079}
 --- !u!4 &204445278
 Transform:
   m_ObjectHideFlags: 0
@@ -182,8 +183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6216f9fcedd41a8baffa0aa02a0277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 1.5
-  spawnTimeCounter: 1
+  obstacleTimer: 2
+  timeUntilObstacle: 2
+  cakeTimer: 2
+  timeUntilCake: 1
 --- !u!114 &204445280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef4baf70b9f24df7a5c0cd60f757429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledObjects: []
-  objectToPool: {fileID: 1542120265570459400, guid: 23b637cfe89754f5698bf60a6b9d9a9b, type: 3}
+  pooledObstacles: []
+  pooledCake: []
+  obstacleToPool: {fileID: 1542120265570459400, guid: 23b637cfe89754f5698bf60a6b9d9a9b, type: 3}
+  cakeToPool: {fileID: 8229480608411240222, guid: 1e2fc83572b9c40b08435a23fc1b2efe, type: 3}
   amountToPool: 5
 --- !u!1 &448996448
 GameObject:
@@ -263,7 +268,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -277,6 +282,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448996448}
+  m_CullTransparentMesh: 1
+--- !u!1 &514165077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514165078}
+  - component: {fileID: 514165080}
+  - component: {fileID: 514165079}
+  m_Layer: 5
+  m_Name: Cake
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &514165078
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514165077}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 865803770}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 95, y: -100}
+  m_SizeDelta: {x: 180, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &514165079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514165077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'CAKE: '
+--- !u!222 &514165080
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514165077}
   m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
@@ -454,6 +538,7 @@ RectTransform:
   m_Children:
   - {fileID: 1787217446}
   - {fileID: 448996449}
+  - {fileID: 514165078}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -622,7 +707,7 @@ GameObject:
   - component: {fileID: 2062117295}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
